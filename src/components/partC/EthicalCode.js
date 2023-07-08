@@ -58,15 +58,12 @@ const EthicalCode = ({ screen, setScreen }) => {
         color: "white",
         fontSize: "20px",
         display: "flex",
-        cursor:"pointer"
+        cursor: "pointer",
       }}
       onClick={() => setScreen("viewEthicalData")}
-      
     >
       <p>{ethicalData.ethicalCodeCount}</p>
-      <p style={{ width: "100px" }}>
-        say has ethical code of conduct and is safe to do business with
-      </p>
+      <p>say has ethical code of conduct and is safe to do business with</p>
     </div>
   );
 };

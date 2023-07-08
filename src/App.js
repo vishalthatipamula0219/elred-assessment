@@ -41,7 +41,6 @@ function App() {
           </>
         )}
 
-        {screen === "main" && <div></div>}
         <div style={{ backgroundColor: screen === "main" ? "grey" : "" }}>
           <p
             style={{ color: screen === "main" ? "white" : "", padding: "15px" }}

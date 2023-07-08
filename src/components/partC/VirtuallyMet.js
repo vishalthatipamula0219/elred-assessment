@@ -21,12 +21,14 @@ const VirtuallyMet = ({ screen, setScreen }) => {
         <TextField
           type="search"
           value={searchValue}
-          
           onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
         />
         {virtualData.result
           .filter((item) => {
-            return item.firstname.toLowerCase().includes(searchValue) || item.lastname.toLowerCase().includes(searchValue);
+            return (
+              item.firstname.toLowerCase().includes(searchValue) ||
+              item.lastname.toLowerCase().includes(searchValue)
+            );
           })
           .map((item) => {
             return (
@@ -51,6 +53,7 @@ const VirtuallyMet = ({ screen, setScreen }) => {
         color: "white",
         fontSize: "20px",
         display: "flex",
+        cursor: "pointer",
       }}
       onClick={() => setScreen("viewVirtualData")}
     >

@@ -22,7 +22,6 @@ const EthicalCode = ({ screen, setScreen }) => {
   if (screen === "viewEthicalData") {
     return (
       <>
-      
         <TextField
           type="search"
           placeholder="search"
@@ -59,12 +58,15 @@ const EthicalCode = ({ screen, setScreen }) => {
         color: "white",
         fontSize: "20px",
         display: "flex",
-        
+        cursor:"pointer"
       }}
       onClick={() => setScreen("viewEthicalData")}
+      
     >
-      <p >{ethicalData.ethicalCodeCount}</p>
-      <p style={{width:"1000px"}}>say has ethical code of conduct and is safe to do business with</p>
+      <p>{ethicalData.ethicalCodeCount}</p>
+      <p style={{ width: "100px" }}>
+        say has ethical code of conduct and is safe to do business with
+      </p>
     </div>
   );
 };

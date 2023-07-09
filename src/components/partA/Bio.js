@@ -5,9 +5,13 @@ const Bio = ({ screen, setScreen }) => {
     return null;
   }
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
       <ChevronLeftIcon
-        onClick={() => setScreen(screen === "main" ? "editBio" : "main")}
+        onClick={() => {
+          if (screen !== "main") {
+            setScreen(screen === "main" ? "editBio" : "main");
+          }
+        }}
       />
       {screen === "main" ? "Bio" : "My Bio"}
     </div>

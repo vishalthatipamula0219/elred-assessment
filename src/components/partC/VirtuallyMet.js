@@ -25,7 +25,10 @@ const VirtuallyMet = ({ screen, setScreen }) => {
               have met in real life/video call
             </span>
           </Typography>
-          <CancelIcon onClick={() => setScreen("main")} />
+          <CancelIcon
+            sx={{ cursor: "pointer" }}
+            onClick={() => setScreen("main")}
+          />
         </div>
 
         <TextField

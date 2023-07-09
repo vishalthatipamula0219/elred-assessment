@@ -17,7 +17,6 @@ const EthicalCode = ({ screen, setScreen }) => {
       "https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsEthicalCodeResponse.json"
     );
     setEthicalData(data);
-    
   };
 
   if (screen === "viewEthicalData") {
@@ -30,7 +29,10 @@ const EthicalCode = ({ screen, setScreen }) => {
               say has ethical code of condu...
             </span>
           </Typography>
-          <CancelIcon onClick={() => setScreen("main")} />
+          <CancelIcon
+            sx={{ cursor: "pointer" }}
+            onClick={() => setScreen("main")}
+          />
         </div>
 
         <TextField

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Avatar, Card, TextField } from "@mui/material";
+import { Avatar, Card, TextField, Typography } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const EthicalCode = ({ screen, setScreen }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -16,15 +17,26 @@ const EthicalCode = ({ screen, setScreen }) => {
       "https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsEthicalCodeResponse.json"
     );
     setEthicalData(data);
-    console.log("ethical", data);
+    
   };
 
   if (screen === "viewEthicalData") {
     return (
       <>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" sx={{ mt: 0 }}>
+            {ethicalData.ethicalCodeCount}{" "}
+            <span style={{ color: "grey" }}>
+              say has ethical code of condu...
+            </span>
+          </Typography>
+          <CancelIcon onClick={() => setScreen("main")} />
+        </div>
+
         <TextField
-          type="search"
-          placeholder="search"
+          label="search"
+          variant="outlined"
+          sx={{ width: "100%", pb: 2 }}
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
         />
@@ -37,19 +49,23 @@ const EthicalCode = ({ screen, setScreen }) => {
           })
           .map((item) => {
             return (
-              <Card>
-                <div style={{ display: "flex" }}>
-                  <Avatar src={item.dpURL} sx={{ mr: 2 }} />
+              <Card sx={{}}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Avatar src={item.dpURL} sx={{ m: 1 }} />
                   <p>
                     {item.firstname} {item.lastname}
                   </p>
                 </div>
-                <p> {item.title[0].value}</p>
+                <p style={{ marginLeft: "10px" }}> {item.title[0].value}</p>
               </Card>
             );
           })}
       </>
     );
+  }
+
+  if (screen === "viewVirtualData") {
+    return null;
   }
 
   return (
@@ -62,7 +78,9 @@ const EthicalCode = ({ screen, setScreen }) => {
       }}
       onClick={() => setScreen("viewEthicalData")}
     >
-      <p>{ethicalData.ethicalCodeCount}</p>
+      <p style={{ marginRight: "10px", paddingLeft: "5px" }}>
+        {ethicalData.ethicalCodeCount}
+      </p>
       <p>say has ethical code of conduct and is safe to do business with</p>
     </div>
   );

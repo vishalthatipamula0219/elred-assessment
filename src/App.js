@@ -1,15 +1,18 @@
-import Bio from "./components/bio/Bio";
-import AboutMe from "./components/bio/AboutMe";
-import BloodGroup from "./components/bio/BloodGroup";
-import Resume from "./components/bio/Resume";
+import Bio from "./components/partA/Bio";
+import AboutMe from "./components/partA/AboutMe";
+import BloodGroup from "./components/partA/BloodGroup";
+import Resume from "./components/partA/Resume";
 import { useState } from "react";
 import EthicalCode from "./components/partC/EthicalCode";
 import VirtuallyMet from "./components/partC/VirtuallyMet";
+import SoftSkills from "./components/partB/SoftSkills";
 
 function App() {
   const [screen, setScreen] = useState("main");
-  const [aboutMe, setAboutMe] = useState("");
-  const [bloodGroup, setBloodGroup] = useState("B positive (B+)");
+  const [aboutMe, setAboutMe] = useState(localStorage.getItem("aboutMe") || "");
+  const [bloodGroup, setBloodGroup] = useState(
+    localStorage.getItem("bloodGroup") || "B positive (B+)"
+  );
 
   return (
     <div
@@ -21,9 +24,9 @@ function App() {
       }}
     >
       <div style={{ width: "375px", height: "812px" }}>
-        <Bio screen={screen} setScreen={setScreen} />
-        {["main", "editBio"].includes(screen) && (
+        {["main", "editBio", "editSkills"].includes(screen) && (
           <>
+            <Bio screen={screen} setScreen={setScreen} />
             <AboutMe
               screen={screen}
               setScreen={setScreen}
@@ -38,6 +41,7 @@ function App() {
               setBloodGroup={setBloodGroup}
               aboutMe={aboutMe}
             />
+            <SoftSkills screen={screen} setScreen={setScreen} />
           </>
         )}
 
@@ -45,7 +49,7 @@ function App() {
           <p
             style={{ color: screen === "main" ? "white" : "", padding: "15px" }}
           >
-            Ratings
+            {screen === "main" ? "Ratings" : ""}
           </p>
 
           <EthicalCode screen={screen} setScreen={setScreen} />

@@ -15,6 +15,10 @@ const BloodGroup = ({
     "A negative (A-)",
   ];
 
+  if (screen === "editSkills") {
+    return null;
+  }
+
   if (screen === "editBio") {
     return (
       <div>
@@ -40,6 +44,7 @@ const BloodGroup = ({
             onClick={() => {
               localStorage.setItem("aboutMe", aboutMe);
               localStorage.setItem("bloodGroup", bloodGroup);
+              setScreen("main");
             }}
           >
             Save

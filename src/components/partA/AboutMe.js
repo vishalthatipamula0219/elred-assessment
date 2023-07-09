@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 
 export default function AboutMe({ screen, setScreen, aboutMe, setAboutMe }) {
+  if (screen === "editSkills") {
+    return null;
+  }
   if (screen === "editBio") {
     return (
       <div>
@@ -36,7 +39,7 @@ export default function AboutMe({ screen, setScreen, aboutMe, setAboutMe }) {
           <Typography variant="h5" component="div">
             About Me
           </Typography>
-          <EditIcon onClick={() => setScreen("editBio")} />
+          <EditIcon sx={{cursor:"pointer"}} onClick={() => setScreen("editBio")} />
         </div>
 
         <Typography variant="body2" sx={{ textAlign: "center", color: "grey" }}>

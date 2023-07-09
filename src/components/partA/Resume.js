@@ -30,6 +30,10 @@ export default function Resume({ screen, setScreen }) {
     pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   }, []);
 
+  if (screen === "editSkills") {
+    return null;
+  }
+
   if (screen === "editBio") {
     return (
       <div className="Example__container">
